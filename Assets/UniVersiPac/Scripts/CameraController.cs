@@ -1,9 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    RaycastHit hit = new RaycastHit();
     public bool lockCursor;
 public float mouseSensivity = 10;
 public Transform target;
@@ -36,5 +37,10 @@ void LateUpdate()
     transform.eulerAngles = currentRotation;
 
     transform.position = target.position - transform.forward * distanceFromTarget;
+
+        if(Physics.Linecast (target.position, transform.position, out hit))
+        {
+            transform.position = hit.point + transform.forward * 0.2f;
+        }
 }
 }
