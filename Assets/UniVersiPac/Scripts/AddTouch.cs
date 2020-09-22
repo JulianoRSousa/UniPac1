@@ -7,9 +7,8 @@ public class AddTouch : MonoBehaviour
 {
     private void OnCollisionEnter(Collision objeto)
     {
-        if (objeto.gameObject.CompareTag("Enemy"))
+        if (objeto.gameObject.CompareTag("Teacher"))
         {
-            // Destroy(objeto.gameObject);
             print("colisão");
             Time.timeScale = 0;
         }
